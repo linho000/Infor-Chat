@@ -2,7 +2,7 @@
 
 const express = require('express');
 const http = require('http');
-const io = require('socket.io');
+const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
@@ -33,7 +33,7 @@ function botActivityTimeout() {
 }
 
 // Gerencia a conexão de um cliente
-io.on('connection', (socket) => {
+io2.on('connection', (socket) => {
   console.log('Um cliente se conectou');
 
   // Iniciar o temporizador de inatividade do bot
@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
 function displayMessage(username, message) {
   // Adicione esta condição para evitar exibir mensagens específicas do bot
   if (message !== 'O bot está inativo agora.' && message !== 'Olá! Obrigado por entrar em contato. Estou aqui para ajudar. Por favor, aguarde um momento que nossa equipe já entrara em contato!. 😊') {
-    io.emit('chat message', { username, message });
+    io3.emit('chat message', { username, message });
   }
 }
 
